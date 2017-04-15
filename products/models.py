@@ -15,3 +15,17 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+def _image_upload(instance, filename):
+    return f'products/{instance.slug}/{filename}'
+
+
+class Image(models.Model):
+    product = models.ForeignKey(Product)
+    order = models.PositiveIntegerField(default=1)
+    image = models.ImageField(upload_to=_image_upload)
+
+    class Meta:
+        ordering = ['order']
+        unique_together = ('product', 'order')
