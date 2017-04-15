@@ -34,8 +34,12 @@
                         </div>
                         <div class="list-group">
                             {% for category in categories %}
-                                <a href="#" class="list-group-item">{{ category }}</a>
+                                <a href="#" class="list-group-item">
+                                    <span class="badge">{{ category.product_set.count }}</span>
+                                    {{ category }}
+                                </a>
                             {% endfor %}
+                            <a href="{% url 'products:list' %}" class="list-group-item">All</a>
                         </div>
                     </div>
                 {% endblock %}

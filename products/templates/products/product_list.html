@@ -1,0 +1,13 @@
+{% extends '_layouts/base.html' %}
+
+{% block content %}
+    <ul>
+        {% for product in object_list %}
+            <li>
+                <h3>{{ product }}</h3>
+                <p>${{ product.price }}</p>
+                <p>{{ product.quantity }} left in stock</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
