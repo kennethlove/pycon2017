@@ -23,11 +23,11 @@ class Product(models.Model):
 
 
 def _image_upload(instance, filename):
-    return f'products/{instance.slug}/{filename}'
+    return f'products/{instance.product.slug}/{filename}'
 
 
 class Image(models.Model):
-    product = models.ForeignKey(Product)
+    product = models.ForeignKey(Product, related_name='images')
     order = models.PositiveIntegerField(default=1)
     image = models.ImageField(upload_to=_image_upload)
 
