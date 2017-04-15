@@ -29,3 +29,13 @@ class Image(models.Model):
     class Meta:
         ordering = ['order']
         unique_together = ('product', 'order')
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
