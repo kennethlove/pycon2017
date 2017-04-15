@@ -20,7 +20,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Category <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         {% for category in categories %}
-                        <li><a href="#">{{ category }}</a></li>
+                        <li>
+                            <a href="{% url 'products:category' category=category|lower %}">{{ category }} <span class="badge pull-right">{{ category.product_set.count }}</span></a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </li>
