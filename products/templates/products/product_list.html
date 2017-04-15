@@ -4,7 +4,7 @@
     <ul>
         {% for product in object_list %}
             <li>
-                <h3>{{ product }}</h3>
+                <h3><a href="{{ product.get_absolute_url }}">{{ product }}</a></h3>
                 <p>${{ product.price }}</p>
                 <p>{{ product.quantity }} left in stock</p>
             </li>
