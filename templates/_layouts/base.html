@@ -20,11 +20,25 @@
         <![endif]-->
     </head>
     <body>
+        {% load product_tags %}
+        {% get_categories as categories %}
+
         {% include '_partials/navbar.html' %}
 
         <div class="container-fluid">
             <div class="col-lg-2 col-md-3 col-sm-4">
-                {% block sidebar %}{% endblock %}
+                {% block sidebar %}
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Browse by category</h3>
+                        </div>
+                        <div class="list-group">
+                            {% for category in categories %}
+                                <a href="#" class="list-group-item">{{ category }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endblock %}
             </div>
             <div class="col-lg-10 col-md-9 col-sm-8">
                 {% block content %}{% endblock %}
