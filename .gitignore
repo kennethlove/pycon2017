@@ -197,6 +197,9 @@ wheels/
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
+# All of the IDE folders
+.idea/
+
 # Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries
