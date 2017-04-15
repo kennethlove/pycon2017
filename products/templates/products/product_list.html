@@ -2,15 +2,22 @@
 
 {% block content %}
     {% if object_list %}
-        <ul>
-            {% for product in object_list %}
-                <li>
-                    <h3><a href="{{ product.get_absolute_url }}">{{ product }}</a></h3>
-                    <p>${{ product.price }}</p>
-                    <p>{{ product.quantity }} left in stock</p>
-                </li>
-            {% endfor %}
-        </ul>
+        {% for product in product_list %}
+            <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href="{{ product.get_absolute_url }}">{{ product }}</a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <img src="{{ product.images.all.0.image.url }}">
+                        <p>
+                            <strong>${{ product.price }}</strong> | {{ product.quantity }} left in stock
+                            <a href="{{ product.get_absolute_url }}" class="pull-right">More info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     {% else %}
         <h3>Sorry, no products available!</h3>
     {% endif %}
