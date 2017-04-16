@@ -35,6 +35,9 @@ class Image(models.Model):
         ordering = ['order']
         unique_together = ('product', 'order')
 
+    def __str__(self):
+        return f'Image {self.order} for {self.product}'
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
