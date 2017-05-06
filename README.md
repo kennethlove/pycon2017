@@ -11,4 +11,5 @@ This tutorial assumes Python 3.6. If you're using other versions, you'll have to
 3. Activate your virtual environment
 4. Install the required packages with `pip install -r requirements.txt` while inside the project's directory
 5. Check out the `start` tag for the project, this is where the tutorial will pick up (`git checkout start`)
+6. Run `python manage.py generate_purchases 20` to add 20 purchases and all related records to your database
 
