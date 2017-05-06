@@ -19,7 +19,7 @@ class ProductFactory(DjangoModelFactory):
     price = factory.Faker('pydecimal', left_digits=3, right_digits=2, positive=True)
     location = factory.Faker('isbn10', separator='')
     serial_number = factory.Faker('uuid4')
-    quantity = factory.Faker('pyint')
+    quantity = factory.Faker('random_number', digits=4)
 
     @factory.lazy_attribute
     def name(self):
