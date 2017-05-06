@@ -31,4 +31,4 @@ class Purchase(models.Model):
 class PurchaseItem(models.Model):
     product = models.ForeignKey('products.Product')
     purchase = models.ForeignKey(Purchase)
-    quanity = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=1)
