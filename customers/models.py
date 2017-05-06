@@ -25,9 +25,10 @@ class Purchase(models.Model):
     discount_code = models.CharField(blank=True, default='', max_length=20)
     total = models.DecimalField(max_digits=9, decimal_places=2)
     shipped = models.BooleanField(default=False)
+    items = models.ManyToManyField('products.Product', through='PurchaseItem')
 
 
-class PurchasItem(models.Model):
+class PurchaseItem(models.Model):
     product = models.ForeignKey('products.Product')
-    purchase = models.ForeignKey(Purchase, related_name='items')
+    purchase = models.ForeignKey(Purchase)
     quanity = models.IntegerField(default=1)
