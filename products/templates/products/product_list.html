@@ -9,7 +9,7 @@
                         <h3 class="panel-title"><a href="{{ product.get_absolute_url }}">{{ product }}</a></h3>
                     </div>
                     <div class="panel-body">
-                        <img src="{{ product.images.all.0.image.url }}">
+                        <img src="{{ product.images.all.0.image.url }}" class="img-responsive">
                         <p>
                             <strong>${{ product.price }}</strong> | {{ product.quantity }} left in stock
                             <a href="{{ product.get_absolute_url }}" class="pull-right">More info</a>
