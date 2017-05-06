@@ -1,6 +1,8 @@
 import datetime
 import random
 
+from django.utils import timezone
+
 import factory
 from factory.django import DjangoModelFactory
 from faker import Faker
@@ -46,7 +48,7 @@ class PurchaseFactory(DjangoModelFactory):
         if random.choice([0]*7 + [1]):
             return fake.date_time_between_dates(
                 self.placed_at,
-                datetime.datetime.now()
+                timezone.now()
             )
         return None
 
