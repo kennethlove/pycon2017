@@ -22,6 +22,7 @@ class BigOrderFilter(admin.SimpleListFilter):
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['admin_name']
+    search_fields = ['name']
 
 
 @admin.register(models.Purchase)
