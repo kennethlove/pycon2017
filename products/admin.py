@@ -9,6 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
         ('name', 'slug'),
         'description',
         ('price', 'quantity'),
+        'featured',
         ('serial_number', 'location'),
         'categories'
     )
