@@ -10,6 +10,7 @@ class Product(models.Model):
     location = models.CharField(max_length=10, unique=True)
     serial_number = models.CharField(max_length=40, unique=True)
     quantity = models.IntegerField()
+    featured = models.BooleanField(default=False)
     categories = models.ManyToManyField('Category')
 
     class Meta:
