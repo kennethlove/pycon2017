@@ -5,7 +5,13 @@ from . import models
 
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = ['name', 'description']
+    fields = (
+        ('name', 'slug'),
+        'description',
+        ('price', 'quantity'),
+        ('serial_number', 'location'),
+        'categories'
+    )
 
 admin.site.register(models.Image)
 admin.site.register(models.Category)
