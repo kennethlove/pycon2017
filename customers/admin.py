@@ -37,6 +37,7 @@ ship.short_description = 'Mark purchases as shipped now'
 @admin.register(models.Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
     actions = [ship]
+    date_hierarchy = 'placed_at'
     list_display = ['customer', 'placed_at', 'shipped_at', 'shipped', 'total']
     list_editable = ['shipped']
     list_filter = ['shipped', 'placed_at', 'shipped_at', BigOrderFilter]
