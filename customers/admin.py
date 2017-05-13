@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.db.models import Count
 from django.utils import timezone
 
+from . import forms
 from . import models
 
 
@@ -22,6 +23,7 @@ class BigOrderFilter(admin.SimpleListFilter):
 
 
 class CustomerAdmin(admin.ModelAdmin):
+    form = forms.CustomerForm
     list_display = ['admin_name']
     search_fields = ['name']
 
