@@ -17,6 +17,12 @@ class Customer(models.Model):
     def __str__(self):
         return f'{self.name} ({self.email})'
 
+    @property
+    def admin_name(self):
+        last, *rest = self.name.split()
+        rest = ' '.join(rest)
+        return f'{last}, {rest} ({self.email})'
+
 
 class Purchase(models.Model):
     customer = models.ForeignKey(Customer, related_name='purchases')

@@ -3,7 +3,7 @@ from django.contrib import admin
 from . import models
 
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['admin_name']
 
 
 @admin.register(models.Purchase)
