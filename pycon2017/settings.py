@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
+    'image_cropping',
     'products',
     'customers',
 ]
@@ -125,3 +127,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'assets'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
+
+# Easy thumbnails
+from easy_thumbnails.conf import Settings as easy_thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+)
+THUMBNAIL_PROCESSORS += easy_thumbnail_settings.THUMBNAIL_PROCESSORS
