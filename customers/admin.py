@@ -44,5 +44,18 @@ class PurchaseAdmin(admin.ModelAdmin):
     ordering = ['placed_at']
     search_fields = ['customer__name', 'items__name']
 
+    fieldsets = (
+        (None, {
+            'fields': (
+                ('customer', 'total', 'shipped'),
+                'discount_code'
+            )
+        }),
+        ('Dates', {
+            'classes': ('collapse',),
+            'fields': ('placed_at', 'shipped_at'),
+        })
+    )
+
 admin.site.register(models.Customer, CustomerAdmin)
 admin.site.register(models.PurchaseItem)
