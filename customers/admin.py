@@ -25,6 +25,8 @@ class BigOrderFilter(admin.SimpleListFilter):
 class CustomerAdmin(admin.ModelAdmin):
     form = forms.CustomerForm
     list_display = ['admin_name']
+    save_as = True
+    save_on_top = True
     search_fields = ['name']
 
 
