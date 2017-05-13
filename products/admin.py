@@ -4,6 +4,10 @@ from image_cropping import ImageCroppingMixin
 from . import models
 
 
+class ImageInline(ImageCroppingMixin, admin.StackedInline):
+    model = models.Image
+
+
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     fields = (
@@ -15,6 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
         'categories'
     )
     filter_horizontal = ['categories']
+    inlines = [ImageInline]
     prepopulated_fields = {'slug': ('name',)}
     radio_fields = {'featured': admin.HORIZONTAL}
 
