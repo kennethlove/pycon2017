@@ -33,8 +33,14 @@ class Purchase(models.Model):
     shipped = models.BooleanField(default=False)
     items = models.ManyToManyField('products.Product', through='PurchaseItem')
 
+    def __str__(self):
+        return f'#{self.pk}'
+
 
 class PurchaseItem(models.Model):
     product = models.ForeignKey('products.Product')
     purchase = models.ForeignKey(Purchase)
     quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f'{self.product} for {self.purchase}'
