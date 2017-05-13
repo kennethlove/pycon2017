@@ -1,4 +1,5 @@
 from django.contrib import admin
+from image_cropping import ImageCroppingMixin
 
 from . import models
 
@@ -17,5 +18,9 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     radio_fields = {'featured': admin.HORIZONTAL}
 
-admin.site.register(models.Image)
+
+@admin.register(models.Image)
+class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    pass
+
 admin.site.register(models.Category)

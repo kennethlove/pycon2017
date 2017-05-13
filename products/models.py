@@ -37,7 +37,7 @@ class Image(models.Model):
     product = models.ForeignKey(Product, related_name='images')
     order = models.PositiveIntegerField(default=1)
     image = models.ImageField(upload_to=_image_upload)
-    cropping = ImageRatioField('image', '300x500')
+    cropping = ImageRatioField('image', '450x600')
 
     class Meta:
         ordering = ['order']
