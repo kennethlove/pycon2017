@@ -19,9 +19,9 @@ class Customer(models.Model):
 
     @property
     def admin_name(self):
-        last, *rest = self.name.split()
-        rest = ' '.join(rest)
-        return f'{last}, {rest} ({self.email})'
+        *first, last = self.name.split()
+        first = ' '.join(first)
+        return f'{last}, {first} ({self.email})'
 
 
 class Purchase(models.Model):
