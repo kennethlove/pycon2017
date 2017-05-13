@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
         'categories'
     )
     filter_horizontal = ['categories']
+    prepopulated_fields = {'slug': ('name',)}
     radio_fields = {'featured': admin.HORIZONTAL}
 
 admin.site.register(models.Image)
