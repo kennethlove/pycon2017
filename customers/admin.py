@@ -8,7 +8,7 @@ class CustomerAdmin(admin.ModelAdmin):
 
 @admin.register(models.Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['customer', 'placed_at', 'shipped', 'total']
 
 admin.site.register(models.Customer, CustomerAdmin)
 admin.site.register(models.PurchaseItem)
