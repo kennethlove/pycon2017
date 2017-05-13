@@ -10,6 +10,7 @@ class CustomerAdmin(admin.ModelAdmin):
 class PurchaseAdmin(admin.ModelAdmin):
     list_display = ['customer', 'placed_at', 'shipped_at', 'shipped', 'total']
     list_editable = ['shipped']
+    list_filter = ['shipped']
     ordering = ['placed_at']
 
 admin.site.register(models.Customer, CustomerAdmin)
