@@ -31,6 +31,7 @@ class PurchaseAdmin(admin.ModelAdmin):
     list_editable = ['shipped']
     list_filter = ['shipped', 'placed_at', 'shipped_at', BigOrderFilter]
     ordering = ['placed_at']
+    search_fields = ['customer__name', 'items__name']
 
 admin.site.register(models.Customer, CustomerAdmin)
 admin.site.register(models.PurchaseItem)
