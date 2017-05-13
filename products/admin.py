@@ -8,7 +8,7 @@ class ProductAdmin(admin.ModelAdmin):
     fields = (
         ('name', 'slug'),
         'description',
-        ('price', 'quantity'),
+        ('price', 'quantity', 'featured'),
         ('serial_number', 'location'),
         'categories'
     )
