@@ -13,6 +13,7 @@ class ProductAdmin(admin.ModelAdmin):
         ('serial_number', 'location'),
         'categories'
     )
+    filter_horizontal = ['categories']
     radio_fields = {'featured': admin.HORIZONTAL}
 
 admin.site.register(models.Image)
