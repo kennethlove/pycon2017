@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from image_cropping import ImageRatioField
 
 FEATURED = (
     (0, 'No'),
@@ -36,6 +37,7 @@ class Image(models.Model):
     product = models.ForeignKey(Product, related_name='images')
     order = models.PositiveIntegerField(default=1)
     image = models.ImageField(upload_to=_image_upload)
+    cropping = ImageRatioField('image', '300x500')
 
     class Meta:
         ordering = ['order']
