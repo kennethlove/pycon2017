@@ -1,6 +1,11 @@
 from django.db import models
 from django.urls import reverse
 
+FEATURED = (
+    (0, 'No'),
+    (1, 'Everywhere'),
+    (2, 'Category-only')
+)
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -10,7 +15,7 @@ class Product(models.Model):
     location = models.CharField(max_length=10, unique=True)
     serial_number = models.CharField(max_length=40, unique=True)
     quantity = models.IntegerField()
-    featured = models.BooleanField(default=False)
+    featured = models.IntegerField(choices=FEATURED, default=0)
     categories = models.ManyToManyField('Category')
 
     class Meta:
