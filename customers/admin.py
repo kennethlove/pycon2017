@@ -8,7 +8,8 @@ class CustomerAdmin(admin.ModelAdmin):
 
 @admin.register(models.Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'placed_at', 'shipped', 'total']
+    list_display = ['customer', 'placed_at', 'shipped_at', 'shipped', 'total']
+    ordering = ['placed_at']
 
 admin.site.register(models.Customer, CustomerAdmin)
 admin.site.register(models.PurchaseItem)
