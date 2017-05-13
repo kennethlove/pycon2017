@@ -6,6 +6,10 @@ from . import forms
 from . import models
 
 
+class PurchaseItemInline(admin.TabularInline):
+    model = models.PurchaseItem
+
+
 class BigOrderFilter(admin.SimpleListFilter):
     title = 'big order'
     parameter_name = 'big_order'
@@ -42,6 +46,7 @@ ship.short_description = 'Mark purchases as shipped now'
 class PurchaseAdmin(admin.ModelAdmin):
     actions = [ship]
     date_hierarchy = 'placed_at'
+    inlines = [PurchaseItemInline]
     list_display = ['customer', 'placed_at', 'shipped_at', 'shipped', 'total']
     list_editable = ['shipped']
     list_filter = ['shipped', 'placed_at', 'shipped_at', BigOrderFilter]
