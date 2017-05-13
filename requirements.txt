@@ -4,4 +4,4 @@ django-countries==4.5
 faker==0.7.11
 factory_boy==2.8.1
 django-image-cropping==1.0.4
-easy-thumbnails==2.3
+easy-thumbnails==2.4.1
