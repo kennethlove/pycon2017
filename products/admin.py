@@ -28,6 +28,14 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     radio_fields = {'featured': admin.HORIZONTAL}
 
+    class Media:
+        css = {
+            'all': ('trumbo/ui/trumbowyg.min.css',)
+        }
+        js = (
+            'https://code.jquery.com/jquery-3.2.1.min.js',
+        )
+
 
 @admin.register(models.Image)
 class ImageAdmin(ImageCroppingMixin, admin.ModelAdmin):

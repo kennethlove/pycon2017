@@ -1,3 +1,4 @@
 <div id="wysiwyg">
-    {% include "django/forms/widgets/textarea.html" %}
+    {% if widget.value %}{{ widget.value|safe }}{% endif %}
 </div>
+{% include "django/forms/widgets/textarea.html" %}
