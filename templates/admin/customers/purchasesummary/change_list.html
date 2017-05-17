@@ -1,4 +1,36 @@
 {% extends "admin/change_list.html" %}
+{% load humanize %}
 
 {% block result_list %}
+    <div class="results">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <div class="text"><a href="#">Product</a></div>
+                    </th>
+                    <th>
+                        <div class="text"><a href="#">Quantity</a></div>
+                    </th>
+                    <th>
+                        <div class="text"><a href="#">Total Sales</a></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in summary %}
+                    <tr class="{% cycle 'row1' 'row2' %}">
+                        <td>{{ row.product__name }}</td>
+                        <td>{{ row.total|intcomma }}</td>
+                        <td>${{ row.total_sales|intcomma }}</td>
+                    </tr>
+                {% endfor %}
+                <tr style="font-weight:bold; border-top:2px solid #ddd">
+                    <td>Total</td>
+                    <td>{{ summary_total.total|intcomma }}</td>
+                    <td>${{ summary_total.total_sales|intcomma }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
