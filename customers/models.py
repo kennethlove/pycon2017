@@ -46,7 +46,7 @@ class PurchaseItem(models.Model):
         return f'{self.product} for {self.purchase}'
 
 
-class PurchaseSummary(Purchase):
+class PurchaseSummary(PurchaseItem):
     class Meta:
         proxy = True
         verbose_name = "purchase summary"
