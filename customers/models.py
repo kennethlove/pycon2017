@@ -44,3 +44,10 @@ class PurchaseItem(models.Model):
 
     def __str__(self):
         return f'{self.product} for {self.purchase}'
+
+
+class PurchaseSummary(Purchase):
+    class Meta:
+        proxy = True
+        verbose_name = "purchase summary"
+        verbose_name_plural = "purchase summaries"
