@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.db.models import Count
+from django.db.models import Count, Sum
 from django.utils import timezone
 
 from . import forms
@@ -69,7 +69,24 @@ class PurchaseAdmin(admin.ModelAdmin):
 
 @admin.register(models.PurchaseSummary)
 class PurchaseSummaryAdmin(admin.ModelAdmin):
-    date_hierarchy = 'placed_at'
+    def changelist_view(self, request, extra_context=None):
+        response = super().changelist_view(request, extra_context)
+        try:
+            qs = response.context_data['cl'].queryset
+        except (AttributeError, KeyError):
+            return response
+
+        metrics = {
+            'total': Sum('quantity'),
+            'total_sales': Sum('product__price'),
+        }
+        response.context_data['summary'] = list(
+            qs.values('product__name').annotate(**metrics).order_by('-quantity')
+        )
+        response.context_data['summary_total'] = dict(
+            qs.aggregate(**metrics)
+        )
+        return response
 
 admin.site.register(models.Customer, CustomerAdmin)
 admin.site.register(models.PurchaseItem)
