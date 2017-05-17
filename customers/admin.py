@@ -66,5 +66,10 @@ class PurchaseAdmin(admin.ModelAdmin):
         })
     )
 
+
+@admin.register(models.PurchaseSummary)
+class PurchaseSummaryAdmin(admin.ModelAdmin):
+    date_hierarchy = 'placed_at'
+
 admin.site.register(models.Customer, CustomerAdmin)
 admin.site.register(models.PurchaseItem)
